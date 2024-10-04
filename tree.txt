@@ -1,0 +1,8 @@
+root/
+│
+├── src/
+│   ├── main.c
+│   └── utils/
+│       └── helper.c
+└── test/
+    └── test_main.c
