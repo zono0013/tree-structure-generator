@@ -22,9 +22,14 @@
    cd tree-structure-generator
    ```
 2. `tree.txt`に`tree`コマンドの出力を入力します:
+   オプションの`-fなどは付けない`
+   **例: **
+   ```
+   tree > tree.txt
+   ```
 
 
-3. `Makefile`を実行します
+4. `Makefile`を実行します
     ```bash
    make create-dirs FILE=tree.txt
    ```
