@@ -7,6 +7,7 @@ create-dirs-mac:
 	@echo "Creating directory structure from $(FILE)..."
 	@awk 'NR > 1 { \
 		line=$$0; \
+		if (line == "") { exit; } \
 		non_filename_char_count = gsub(/[│├└──]/, "", line); \
 		non_filename_char_count += gsub(/ /, "", line); \
 		non_filename_char_count += gsub(/ /, "", line); \
