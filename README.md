@@ -31,7 +31,7 @@
 
 4. `Makefile`を実行します
     ```bash
-   make create-dirs FILE=tree.txt
+   make create-dirs-mac FILE=tree.txt
    ```
 
 
