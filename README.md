@@ -22,8 +22,10 @@
    cd tree-structure-generator
    ```
 2. `tree.txt`に`tree`コマンドの出力を入力します:
-   オプションの`-fなどは付けない`
-   **例: **
+   
+   オプションの`-f`などは付けない
+   
+   **例:**
    ```
    tree > tree.txt
    ```
