@@ -9,13 +9,18 @@ create-dirs-mac:
 	fi
 	@echo "Creating directory structure from $(FILE) in $(OUTPUT_DIR)..."
 	@mkdir -p "$(OUTPUT_DIR)"
-	@awk -v output_dir="$(OUTPUT_DIR)" 'NR > 1 { \
+	@awk -v output_dir="$(OUTPUT_DIR)" -v reserved_file="$(RESERVED_FILES)" 'BEGIN { \
+		gsub(/\,/, "|", reserved_file); \
+		gsub(/ /, "", reserved_file); \
+		if (reserved_file == "") { spfile = "Dockerfile" } \
+		} \
+		NR > 1 { \
 		line=$$0; \
 		if (line == "") { exit; } \
 		non_filename_char_count = gsub(/[│├└──  ]/, "", line); \
 		level = int( non_filename_char_count / 4 - 1); \
 		full_pass = output_dir; \
-		is_dir = (line !~ /\.[^\/]+$$/ && line !~ /Dockerfile|Makefile|README|LICENSE|CHANGELOG|CONTRIBUTING|Vagrantfile|Gemfile|Procfile|Brewfile/); \
+		is_dir = (line !~ /\.[^\/]+$$/ && line !~ /Dockerfile|Makefile|README|LICENSE|CHANGELOG|CONTRIBUTING|Vagrantfile|Gemfile|Procfile|Brewfile/ && line !~ reserved_file); \
 		if (line != "") { \
 			if (is_dir) { \
 				sub(/\/$$/, "", line); \
